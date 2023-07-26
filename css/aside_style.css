@@ -1,0 +1,78 @@
+/* 스크롤바 */
+::-webkit-scrollbar {
+  display:none;
+}
+
+.sidebar {
+  width: 240px;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+  padding: 12px 0;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+  background-color: #212121;
+  color: #fff;
+}
+
+.sidebar__section {
+  padding: 8px 0;
+  border-bottom: 1px solid #303030;
+}
+
+.sidebar__section h3 {
+  padding: 8px 24px;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #AAAAAA;
+}
+
+.sidebar__section__link {
+  display: flex;
+  color: #fff;
+  text-decoration: none;
+  align-items: center;
+  font-size: 14px;
+  padding: 0 24px;
+  height: 40px;
+}
+
+.sidebar__section__link img,
+.sidebar__section__avatar {
+  height: 24px;
+  width: 24px;
+  margin-right: 24px;
+  border-radius: 50%;
+}
+
+.sidebar__section__avatar {
+  border-radius: 50%;
+  background-color: grey;
+}
+
+.sidebar__section__link--selected {
+  background-color: #303030;
+  font-weight: 500;
+}
+
+.sidebar__section__link--selected img {
+  fill: #f00
+}
+
+.sidebar__section:last-child {
+  padding: 16px 24px 0 24px
+}
+
+.sidebar__section:last-child p {
+  font-size: 13px;
+  color: #909090;
+}
+
+.sidebar__section__link--small {
+  margin-right: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #606060;
+  text-decoration: none;
+}

@@ -1,0 +1,139 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/global_style.css">
+    <link rel="stylesheet" href="../css/nav_style.css">
+    <link rel="stylesheet" href="../css/aside_style.css">
+
+    <title>YouTube</title>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navigation icon__line">
+        <div class="navigation__menu">
+            <!-- menu button -->
+            <button class="navigation__button navigation__menu__button">
+                    <img src="../img/icon/hamburger.svg" width="24" height="24"></img>
+            </button>
+
+            <!-- youtube logo -->
+            <image src="../img/Youtube-Logo.svg" alt="youTube">
+        </div>
+
+        <div class="navigation__search">
+            <!-- search field -->
+            <input type="search" class="" placeholder="Search">
+
+            <!-- search button -->
+            <button class="navigation__button navigation__search__icon">
+                <img src="../img/icon/search.svg" width="24" height="24"></img>
+            </button>
+            <!-- voice button -->
+            <button class="navigation__button">
+                <div class="back__circle">
+                    <img src="../img/icon/mic.svg" width="20" height="20"></img>
+                </div>
+            </button>
+        </div>
+
+        <div class="navigation__options">
+            <!-- create button -->
+            <button class="navigation__button">
+                <img src="../img/icon/create.svg" width="24" height="24"></img>
+            </button>
+            <!-- user avatar -->
+            <div class=""><img class="navigation__avatar" alt=""  src="../img/avatar.jpg"> </div>
+                <div>
+        </div>
+    </nav>
+
+    <!-- CHIPS -->
+    <div class="chips">
+        <div class="chips__item chips__item--selected">
+            All
+        </div>
+    </div>
+
+    <!-- SIDE NAVIGATION -->
+    <aside class="sidebar">
+        <section class="sidebar__section">
+            <a class="sidebar__section__link sidebar__section__link--selected" href="/">
+                <img src="../img/icon/home-fill.svg" width="24" height="24"></img>
+                <span>
+                    Home
+                </span>
+            </a>
+            <a class="sidebar__section__link" href="/">
+                <img src="../img/icon/explore.svg" width="24" height="24"></img>
+                <span>
+                    Explore
+                </span>
+            </a>
+
+        </section>
+
+        <section class="sidebar__section">
+            <a class="sidebar__section__link" href="/">
+                <img src="../img/icon/library.svg" width="24" height="24"></img>
+                <span>Library</span>
+            </a>
+
+            <a class="sidebar__section__link" href="/">
+                <img src="../img/icon/history.svg" width="24" height="24"></img>
+                <span>History</span>
+            </a>
+
+        </section>
+
+        <section class="sidebar__section">
+            <h3>Subscriptions</h3>
+            <a class="sidebar__section__link" href="https://www.youtube.com/">
+                <div class=""><img alt=""  src="../img/avatar.jpg"> </div>
+                <span>오르미2기</span>
+            </a>
+            <a class="sidebar__section__link" href="/">
+                <img src="../img/icon/arrowBottom.svg" width="24" height="24"></img>
+
+                <span>Show more</span>
+            </a>
+        </section>
+
+        <section class="sidebar__section">
+            <h3>More from YouTube</h3>
+            <a href="/" class="sidebar__section__link">
+                <img src="../img/icon/premium.svg" width="24" height="24"></img>
+                <span>
+                    Youtube Premium
+                </span>
+            </a>
+        </section>
+
+        <section class="sidebar__section">
+            <a href="/" class="sidebar__section__link">
+                <img src="../img/icon/settings.svg" width="24" height="24"></img>
+                <span>
+                    Settings
+                </span>
+            </a>
+        </section>
+
+        <section>    
+
+        </section>
+		
+    </aside>
+
+    <!-- FEED  -->
+    <main id="feed" class="feed">
+    </main>
+</body>
+
+<script type="text/javascript" src="../js/home.js"></script> 
+<script type="text/javascript" src="../js/video.js"></script> 
+
+</html>
