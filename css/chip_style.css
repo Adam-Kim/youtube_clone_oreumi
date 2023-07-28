@@ -1,0 +1,31 @@
+.chips {
+    border-top: 1px solid #303030;
+    border-bottom: 1px solid #303030;
+    display: flex;
+    position: fixed;
+    top: 56px;
+    right: 0;
+    left: 240px;
+    background-color: #212121;
+  }
+  
+  .chips__item {
+    border: 1px solid #aaa;
+    background-color: #303030;
+    color: #fff;
+    font-size: 14px;
+    padding: 0 12px;
+    line-height: 30px;
+    border-radius: 16px;
+    margin: 12px 12px 12px 0;
+    cursor: pointer;
+  }
+  
+  .chips__item:first-child {
+    margin-left: 24px;
+  }
+  
+  .chips__item--selected {
+    background-color: white;
+    color: #030303;
+  }

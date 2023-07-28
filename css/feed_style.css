@@ -1,0 +1,8 @@
+.feed {
+    margin-top: 140px;
+    margin-left: 240px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #fff;
+  }

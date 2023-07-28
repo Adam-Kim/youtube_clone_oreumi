@@ -7,8 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/global_style.css">
-    <link rel="stylesheet" href="../css/nav_style.css">
+    <link rel="stylesheet" href="../css/header_style.css">
     <link rel="stylesheet" href="../css/aside_style.css">
+    <link rel="stylesheet" href="../css/chip_style.css">
+    <link rel="stylesheet" href="../css/feed_style.css">
+
+
 
     <title>YouTube</title>
 </head>
@@ -46,6 +50,14 @@
             <button class="navigation__button">
                 <img src="../img/icon/create.svg" width="24" height="24"></img>
             </button>
+            <!-- youtube apps button -->
+            <button class="navigation__button">
+                <img src="../img/icon/apps.svg" width="24" height="24"></img>
+            </button>
+            <!-- notifications button -->
+            <button class="navigation__button">
+                <img src="../img/icon/notifications.svg" width="24" height="24"></img>
+            </button>
             <!-- user avatar -->
             <div class=""><img class="navigation__avatar" alt=""  src="../img/avatar.jpg"> </div>
                 <div>
@@ -55,7 +67,19 @@
     <!-- CHIPS -->
     <div class="chips">
         <div class="chips__item chips__item--selected">
-            All
+            전체
+        </div>
+        <div class="chips__item">
+            믹스
+        </div>
+        <div class="chips__item">
+            개발
+        </div>
+        <div class="chips__item">
+            토끼
+        </div>
+        <div class="chips__item">
+            팬더
         </div>
     </div>
 
@@ -74,6 +98,12 @@
                     Explore
                 </span>
             </a>
+            <a class="sidebar__section__link" href="/">
+                <img src="../img/icon/subscriptions.svg" width="24" height="24"></img>
+                <span>
+                    Subscriptions
+                </span>
+            </a>
 
         </section>
 
@@ -88,10 +118,43 @@
                 <span>History</span>
             </a>
 
+            <a class="sidebar__section__link" href="/">
+                <img src="../img/icon/yourVideos.svg" width="24" height="24"></img>
+                <span>Your Videos</span>
+            </a>
+
+            <a class="sidebar__section__link" href="/">
+                <img src="../img/icon/watchLater.svg" width="24" height="24"></img>
+                <span>Watch later</span>
+            </a>
+
+            <a class="sidebar__section__link" href="/">
+                <img src="../img/icon/liked.svg" width="24" height="24"></img>
+                <span>Your Playlists</span>
+            </a>
+
+            <a class="sidebar__section__link" href="/">
+                <img src="../img/icon/arrowBottom.svg" width="24" height="24"></img>
+                <span>Show more</span>
+            </a>
+
         </section>
 
         <section class="sidebar__section">
             <h3>Subscriptions</h3>
+            <a class="sidebar__section__link" href="https://www.youtube.com/">
+                <div class=""><img alt=""  src="../img/avatar.jpg"> </div>
+                <span>오르미2기</span>
+            </a>
+
+            <a class="sidebar__section__link" href="https://www.youtube.com/">
+                <div class=""><img alt=""  src="../img/avatar.jpg"> </div>
+                <span>오르미2기</span>
+            </a>
+            <a class="sidebar__section__link" href="https://www.youtube.com/">
+                <div class=""><img  alt=""  src="../img/avatar.jpg"> </div>
+                <span>오르미2기</span>
+            </a>
             <a class="sidebar__section__link" href="https://www.youtube.com/">
                 <div class=""><img alt=""  src="../img/avatar.jpg"> </div>
                 <span>오르미2기</span>
@@ -111,6 +174,24 @@
                     Youtube Premium
                 </span>
             </a>
+            <a href="/" class="sidebar__section__link">
+                <img src="../img/icon/gaming.svg" width="24" height="24"></img>
+                <span>
+                    Gaming
+                </span>
+            </a>
+            <a href="/" class="sidebar__section__link">
+                <img src="../img/icon/live.svg" width="24" height="24"></img>
+                <span>
+                    Live
+                </span>
+            </a>
+            <a href="/" class="sidebar__section__link">
+                <img src="../img/icon/sports.svg" width="24" height="24"></img>
+                <span>
+                    sports
+                </span>
+            </a>
         </section>
 
         <section class="sidebar__section">
@@ -120,20 +201,37 @@
                     Settings
                 </span>
             </a>
+            <a href="/" class="sidebar__section__link">
+                <img src="../img/icon/report.svg" width="24" height="24"></img>
+                <span>
+                    Report history
+                </span>
+            </a>
+            <a href="/" class="sidebar__section__link">
+                <img src="../img/icon/help.svg" width="24" height="24"></img>
+                <span>
+                    Help
+                </span>
+            </a>
+            <a href="/" class="sidebar__section__link">
+                <img src="../img/icon/feedback.svg" width="24" height="24"></img>
+                <span>
+                    Send feedback
+                </span>
+            </a>
         </section>
 
         <section>    
-
         </section>
 		
     </aside>
 
     <!-- FEED  -->
     <main id="feed" class="feed">
+
     </main>
 </body>
 
-<script type="text/javascript" src="../js/home.js"></script> 
 <script type="text/javascript" src="../js/video.js"></script> 
 
 </html>
