@@ -8,6 +8,7 @@
     right: 0;
     left: 0;
     background-color: #212121;
+    z-index: 1;
   }
   
   .navigation__button {
@@ -88,4 +89,8 @@
     width: 36px;
     border-radius: 50%;
     background-color: grey;
+  }
+  
+  input{
+    color: #fff;
   }

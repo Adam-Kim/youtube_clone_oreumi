@@ -31,10 +31,10 @@
 
         <div class="navigation__search">
             <!-- search field -->
-            <input type="search" class="" placeholder="Search">
+            <input type="search" id="search__box" class="" placeholder="Search">
 
             <!-- search button -->
-            <button class="navigation__button navigation__search__icon">
+            <button id="search__button" class="navigation__button navigation__search__icon">
                 <img src="../img/icon/search.svg" width="24" height="24"></img>
             </button>
             <!-- voice button -->
@@ -228,10 +228,28 @@
 
     <!-- FEED  -->
     <main id="feed" class="feed">
-
+        <!-- 임의로 아이템을 만들어 css테스트할 class를 만듦 -->
+        <div class="feed__item">
+            <a href="https://www.youtube.com/watch?v=JXl4QgYUi9c&t=1s">
+                <div class="feed__item__thumbnail">
+                    <img src="https://i.ytimg.com/vi/JXl4QgYUi9c/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBBPEIN00Pqor8cmWxpdFLAXGblrQ">
+                    <div class="feed__item__timebar">01:26</div>    
+                </div>
+              </a>
+              <div class="feed__item__info">
+                  <div class=""><img class="feed__item__info__avatar" alt=""  src="https://yt3.ggpht.com/E9K3kX2Qg8DzIx47y4m5ypWrwDA75QvYT-KOzOqItawbQqgfnB7HQtxdRvqPjIhZ7vUeat1ryQ=s48-c-k-c0x00ffffff-no-rj"> </div>
+                  <div class="feed__text__box">
+                      <h3 class="feed__item__info__title">
+                           <a href="https://www.youtube.com/watch?v=JXl4QgYUi9c&t=1s"> Create Windows 11 | using <br> HTML CSS JAVASCRIPT |</a>
+                      </h3>
+                      <a href="https://www.youtube.com/channel/UCTCBO9YrdGSHUCTgz4nuevQ">DIGITAL CABIN</a>
+                      <p> 2M Views · 18 Jul 2021</p>
+                  </div>
+              </div>
+          </div>
     </main>
 </body>
 
-<script type="text/javascript" src="../js/video.js"></script> 
+<script type="text/javascript" src="../js/main_search.js"></script> 
 
 </html>

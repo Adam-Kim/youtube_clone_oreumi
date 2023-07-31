@@ -7,6 +7,7 @@
     right: 0;
     left: 240px;
     background-color: #212121;
+    z-index: 1;
   }
   
   .chips__item {
