@@ -1,21 +1,16 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/global_style.css">
     <link rel="stylesheet" href="../css/header_style.css">
     <link rel="stylesheet" href="../css/aside_style.css">
     <link rel="stylesheet" href="../css/chip_style.css">
-    <link rel="stylesheet" href="../css/feed_style.css">
-
-
-
-    <title>YouTube</title>
+    <link rel="stylesheet" href="../css/channel_style.css">
+    <title>Document</title>
 </head>
 
 <body>
@@ -65,25 +60,6 @@
             <div>
             </div>
     </nav>
-
-    <!-- CHIPS -->
-    <div class="chips">
-        <div class="chips__item chips__item--selected">
-            전체
-        </div>
-        <div class="chips__item">
-            믹스
-        </div>
-        <div class="chips__item">
-            개발
-        </div>
-        <div class="chips__item">
-            토끼
-        </div>
-        <div class="chips__item">
-            팬더
-        </div>
-    </div>
 
     <!-- SIDE NAVIGATION -->
     <aside class="sidebar">
@@ -227,13 +203,129 @@
         </section>
 
     </aside>
+    <div class="channel__feed">
+        <div class="banner">
+            <img src="../img/banner.png"></img>
+        </div>
+        <div class="channel__info">
+            <div class="channel__profile">
+                <div class="channel__avatar">
+                    <img src="../img/User-Avatar.png" alt="">
+                </div>
+                <div class="channel__profile__text">
+                    <div>
+                        <h2>Marcus Levin</h2>
+                    </div>
+                    <div>1.2M subscribers</div>
+                </div>
+            </div>
+            <div class="subscribes__box">
+                <button class="subscribes__button">SUBSCRIBES</button>
+            </div>
+        </div>
+        <div class="channel__menu__bar">
+            <div>
+                <button class="channel__menu selected">HOME</button>
+                <button class="channel__menu">VIDEOS</button>
+                <button class="channel__menu">PLAYLISTS</button>
+                <button class="channel__menu">COMMUNITY</button>
+                <button class="channel__menu">CHANNELS</button>
+                <button class="channel__menu">ABOUT</button>
+                <button class="channel__menu search">
+                    <img src="../img/icon/search.svg" width="24" height="24"></img>
+                </button>
+            </div>
+            <button class="channel__menu">
+                <img src="../img/icon/arrowRight.svg" width="24" height="24"></img>
+            </button>
+        </div>
 
-    <!-- FEED  -->
-    <main id="feed" class="feed">
-        <!-- 임의로 아이템을 만들어 css테스트할 class를 만듦 -->
-    </main>
+        <!-- VIDEOs -->
+        <div class="video__container">
+            <div class="channel__big__video__box">
+                <div class="channel__big__video">
+                </div>
+                <div class="big__video__info">
+                    <h5>Blind Woodturner: Turning passion into fine art</h5>
+                    <p>576,969 views . 3 weeks ago</p>
+                    <p>Chris Fisher, also known as the Blind Woodturner, learned his craft by listening to hundreds of
+                        hours
+                        of YouTube videos and experimenting in his workshop. Now he’s a YouTube creator himself, sells
+                        his
+                        products worldwide, and does demonstrations all around the country.</p>
+                </div>
+            </div>
+
+            <div class="playlist__box">
+                <div class="playlist__info">
+                    <div class="playlist__title">Search On ‘21</div>
+                    <button>
+                        <div>
+                            <img src="../img/icon/play.svg" alt="">
+                        </div>
+                        <div>PLAY ALL</div>
+                    </button>
+                </div>
+                <div class="playlist">
+                    <div class="channel_small__video__box">
+                        <div class="video__thumbnail">
+                            <img src="" alt="">
+                        </div>
+                        <div class="video__info">
+                            <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                            <p>Marcus Levin</p>
+                            <p>329K views . 1 month ago</p>
+                        </div>
+                    </div>
+
+                    <div class="channel_small__video__box">
+                        <div class="video__thumbnail">
+                            <img src="" alt="">
+                        </div>
+                        <div class="video__info">
+                            <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                            <p>Marcus Levin</p>
+                            <p>329K views . 1 month ago</p>
+                        </div>
+                    </div>
+
+                    <div class="channel_small__video__box">
+                        <div class="video__thumbnail">
+                            <img src="" alt="">
+                        </div>
+                        <div class="video__info">
+                            <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                            <p>Marcus Levin</p>
+                            <p>329K views . 1 month ago</p>
+                        </div>
+                    </div>
+
+                    <div class="channel_small__video__box">
+                        <div class="video__thumbnail">
+                            <img src="" alt="">
+                        </div>
+                        <div class="video__info">
+                            <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                            <p>Marcus Levin</p>
+                            <p>329K views . 1 month ago</p>
+                        </div>
+                    </div>
+
+                    <div class="channel_small__video__box">
+                        <div class="video__thumbnail">
+                            <img src="" alt="">
+                        </div>
+                        <div class="video__info">
+                            <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                            <p>Marcus Levin</p>
+                            <p>329K views . 1 month ago</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
-
-<script type="text/javascript" src="../js/main_search.js"></script>
 
 </html>

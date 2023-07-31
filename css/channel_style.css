@@ -1,0 +1,182 @@
+.channel__feed {
+    margin-top: 56px;
+    margin-left: 240px;
+    padding-bottom: 200px;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+    color: #fff;
+}
+
+.banner {
+    width: 100%;
+    height: 192px;
+}
+
+.banner img {
+    height: 192px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.channel__info {
+    display: flex;
+    padding: 16px 65px 4px 65px;
+    width: 100%;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.channel__profile {
+    display: flex;
+    align-items: center;
+}
+
+
+.channel__avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: grey;
+    margin-right: 24px;
+}
+
+.channel__profile__text {
+    padding: 19px
+}
+
+.channel__profile__text h2 {
+    font-size: 24px;
+}
+
+
+.subscribes__box {
+    display: flex;
+    padding: 22px 4px;
+    align-items: center;
+}
+
+.subscribes__button {
+    border-radius: 2px;
+    background: #C00;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+
+
+.channel__menu__bar {
+    padding: 0 65px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+    align-items: center;
+}
+
+.channel__menu {
+    background-color: transparent;
+    color: #AAAAAA;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.channel__menu__bar button {
+    background-color: transparent;
+}
+
+.selected {
+    color: #fff;
+    border-bottom: 1px solid #AAAAAA;
+}
+
+.video__container {
+    padding: 0 65px;
+}
+
+.channel__big__video__box {
+    display: flex;
+    padding: 24px 0;
+    border-bottom: #343434 1px solid;
+}
+
+.channel__big__video {
+    background-color: #AAAAAA;
+    width: 424px;
+    height: 238px;
+    margin-right: 24px;
+}
+
+.big__video__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 40%;
+}
+
+
+
+
+/* playlist */
+.playlist {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: 24px 0;
+    border-bottom: #343434 1px solid;
+}
+
+.playlist__info {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.playlist__title {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.playlist__info button {
+    background-color: transparent;
+    color: #AAAAAA;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    gap: 8px;
+    border: none;
+}
+
+.channel_small__video__box {
+    width: 210px;
+    margin-bottom: 24px;
+}
+
+.video__thumbnail {
+    background-color: #AAAAAA;
+    height: 118px;
+    margin-bottom: 8px;
+}
+
+.video__info h4 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 8px;
+}
+
+.video__info p {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    color: #AAAAAA;
+}

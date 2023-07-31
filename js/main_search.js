@@ -1,4 +1,5 @@
 function createVideoItem(video_id, searchKeyword = "") {
+  
   // XMLHttpRequest 객체 생성
   let xhr = new XMLHttpRequest();
 
@@ -9,11 +10,12 @@ function createVideoItem(video_id, searchKeyword = "") {
   // 응답 처리 설정
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      
       // 가져온 응답 처리
       let response = JSON.parse(xhr.responseText);
-
+      
       // 데이터 있는지 확인
-      if (response && response.video_id !== undefined) {
+      if (response !== undefined) {
         let image_link = response.image_link;
         let upload_date = response.upload_date;
         let video_channel = response.video_channel;
@@ -28,12 +30,16 @@ function createVideoItem(video_id, searchKeyword = "") {
         if (
           searchKeyword &&
           video_title.toLowerCase().indexOf(searchKeyword) === -1
-        ) {
-          createVideoItem(video_id + 1, searchKeyword);
-          return;
-        }
+          ) {
+            createVideoItem(video_id + 1, searchKeyword);
+            return;
+          }
+          
+        //재귀호출
+        createVideoItem(video_id + 1, searchKeyword);
+          
 
-        // 검색어와 영상 제목이 일치하거나 검색어가 없으면 화면에 영상 추가
+        /*검색어와 영상 제목이 일치하거나 검색어가 없으면 화면에 영상 추가*/
 
         // 채널 데이터를 가져오기 위해 POST 요청
         let channelApiUrl = "http://oreumi.appspot.com/channel/getChannelInfo";
@@ -54,6 +60,8 @@ function createVideoItem(video_id, searchKeyword = "") {
 
             // 채널 데이터를 받아와서 처리하는 로직 추가
             if (channelResponse) {
+
+              
               let channel_profile = channelResponse.channel_profile;
 
               // html에 요소 넣기
@@ -124,7 +132,7 @@ function createVideoItem(video_id, searchKeyword = "") {
               feed.appendChild(videoContainer);
 
               // 재귀호출
-              createVideoItem(video_id + 1, searchKeyword);
+              
             }
           }
         };
