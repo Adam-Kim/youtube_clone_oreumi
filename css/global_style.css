@@ -16,4 +16,5 @@ button {
     -moz-appearance: none;
     appearance: none;
     box-shadow: none;
+    cursor:pointer;
 }

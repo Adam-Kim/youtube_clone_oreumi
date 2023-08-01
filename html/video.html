@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/header_style.css">
     <link rel="stylesheet" href="../css/aside_style.css">
     <link rel="stylesheet" href="../css/chip_style.css">
-    <link rel="stylesheet" href="../css/channel_feed_style.css">
+    <link rel="stylesheet" href="../css/video_feed_style.css">
     <title>YouTube</title>
 </head>
 
@@ -206,51 +206,143 @@
 
     </aside>
 
-
-    <main id="channel__feed" class="channel__feed">
-        <div id="channel__info__container" class="channel__info__container">
-            
-        </div>
-
-        <div class="channel__menu__bar">
-            <div>
-                <button class="channel__menu selected">HOME</button>
-                <button class="channel__menu">VIDEOS</button>
-                <button class="channel__menu">PLAYLISTS</button>
-                <button class="channel__menu">COMMUNITY</button>
-                <button class="channel__menu">CHANNELS</button>
-                <button class="channel__menu">ABOUT</button>
-                <button class="channel__menu search">
-                    <img src="../img/icon/search.svg" width="24" height="24"></img>
-                </button>
+    <!-- VIDEO FEED -->
+    <main id="video__feed" class="video__feed">
+        <!-- VIDEO & COMMENT 1/2 -->
+        <div class="main__container">
+            <div class="video__container">
             </div>
-            <button class="channel__menu">
-                <img src="../img/icon/arrowRight.svg" width="24" height="24"></img>
-            </button>
-        </div>
-
-        <!-- VIDEOs -->
-        <div class="video__container">
-            <div id="channel__big__video__box" class="channel__big__video__box">
-                
-            </div>
-
-            <div id="playlist__box" class="playlist__box">
-                <div id="playlist__info" class="playlist__info">
-                    <div class="playlist__title">재생목록</div>
-                    <button>
-                        <div>
-                            <img src="../img/icon/play.svg" alt="">
+            <!-- ABOUT THIS VIDEO -->
+            <div class="video__info__container">
+                <!-- VIDEO INFO -->
+                <div class="video__title">
+                    Blind Woodturner: Turning passion into fine art
+                </div>
+                <div class="video__info__box">
+                    <div class="video__info__text">
+                        <p>576,969 views</p>
+                        <p> . </p>
+                        <p>Oct 8, 2021</p>
+                    </div>
+                    <div class="video__buttons">
+                        <div class="video__rating">
+                            <div class="video__thumbs">
+                            <img src="../img/icon/thumbsup.svg" alt="">
+                            <p>1700</p>
+                            </div>
+                            <div class="video__thumbs">
+                                <img src="../img/icon/thumbsdown.svg" alt="">
+                                <p>632</p>
+                            </div>
                         </div>
-                        <div>PLAY ALL</div>
+                        <div class="video__share">
+                            <img src="../img/icon/share.svg" alt="">
+                            <p>SHARE</p>
+                        </div>
+                        <div class="video__save">
+                            <img src="../img/icon/save.svg" alt="">
+                            <p>SAVE</p>
+                        </div>
+                        <img src="../img/icon/others.svg" alt="">
+                    </div>
+                </div>
+                <!-- CHANNEL INFO -->
+                <div class="channel__info">
+                    <div class="channel__info__upside">
+                        <div>
+                            <div class="channel__profile">
+                                <img src="../img/avatar.jpg" alt="">
+                            </div>
+                            <div class="channel__info__text">
+                                <h5>Marcus Levin</h5>
+                                <p>1.2M subscribers</p>
+                            </div>
+                        </div>
+                        <button>SUBSCRIBES</button>
+                    </div>
+                    <div class="channel__info__downside">
+                        <p>Chris Fisher, also known as the Blind Woodturner, learned his craft by listening to hundreds of hours of YouTube videos and experimenting in his workshop. Now he’s a YouTube creator himself, sells his products worldwide, and does demonstrations all around the country.</p>
+                        <button>SHOW MORE</button>
+                    </div>
+                </div>
+            </div>
+            <!-- COMMENT -->
+            <div class="comment__container">
+                <!-- COMMENT NUMBER & SORT -->
+                <div class="comment__number">
+                    <p>286 Comments</p>
+                    <button>
+                        <img src="../img/icon/sort.svg" alt="">
+                        SORT BY
                     </button>
                 </div>
-                <div id="playlist" class="playlist">
-                    
+                <!-- COMMENT WRITE -->
+                <div class="comment__write__container">
+                    <div class="user__profile">
+                        <img src="../img/User-Avatar.png" alt="">
+                        <input type="text" placeholder="Add a public comment...">
+                    </div>
                 </div>
+                <div class="comment__list">
+                    <div class="comment__box">
+                        <div class="comment__profile">
 
+                        </div>
+                        <div class="comment__contents">
+                            <div class="comment__info">
+                                <div class="comment__name">James</div>
+                                <div class="comment__time"> 8 hours ago</div>
+                            </div>
+                            <div class="comment__text">
+                                Wow, world is full of different skills 
+                            </div>
+                            <div class="comment__about">
+                                <div class="rate">
+                                    <div class="rating">
+                                        <img src="../img/icon/thumbsup.svg" alt="">
+                                        <p>3</p>
+                                    </div>
+                                    <div class="rating">
+                                        <img src="../img/icon/thumbsdown.svg" alt="">
+                                        <p>3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        
+        <div class="reco__video__list">
+            <div class="reco__sort__buttons">
+                <button>All</button>
+                <button>From Marcus Levin</button>
+            </div>
+            <div class="video__list">
+                <div class="video__box">
+                    <div class="video__thumbnail">
+                        <img src="" alt="">
+                    </div>
+                    <div class="video__textbox">
+                        <h4>Ep 6: Living to Serve | SEARCH ON</h4>
+                        <p>James Gouse</p>
+                        <p>1M views . 3 years ago</p>
+                    </div>
+                </div>
+                <div class="video__box">
+                    <div class="video__thumbnail">
+                        <img src="" alt="">
+                    </div>
+                    <div class="video__textbox">
+                        <h4>Ep 6: Living to Serve | SEARCH ON</h4>
+                        <p>James Gouse</p>
+                        <p>1M views . 3 years ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
     </main>
 
 </body>
