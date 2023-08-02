@@ -210,59 +210,52 @@
     <main id="video__feed" class="video__feed">
         <!-- VIDEO & COMMENT 1/2 -->
         <div class="main__container">
-            <div class="video__container">
+            <div id="video__container" class="video__container">
+                
             </div>
             <!-- ABOUT THIS VIDEO -->
             <div class="video__info__container">
                 <!-- VIDEO INFO -->
-                <div class="video__title">
-                    Blind Woodturner: Turning passion into fine art
+                <div id="video__title" class="video__title">
                 </div>
                 <div class="video__info__box">
-                    <div class="video__info__text">
-                        <p>576,969 views</p>
-                        <p> . </p>
-                        <p>Oct 8, 2021</p>
+                    <div id="video__info__text" class="video__info__text">
                     </div>
                     <div class="video__buttons">
-                        <div class="video__rating">
-                            <div class="video__thumbs">
-                            <img src="../img/icon/thumbsup.svg" alt="">
-                            <p>1700</p>
+                        <div class="video__rating flexbox">
+                            <div class="video__thumbs flexbox">
+                                <img class="video__buttons__icon" src="../img/icon/thumbsup.svg" alt="">
+                                <p class="video__buttons__label">1700</p>
                             </div>
-                            <div class="video__thumbs">
-                                <img src="../img/icon/thumbsdown.svg" alt="">
-                                <p>632</p>
+                            <div class="video__thumbs flexbox">
+                                <img class="video__buttons__icon" src="../img/icon/thumbsdown.svg" alt="">
+                                <p class="video__buttons__label">632</p>
                             </div>
                         </div>
-                        <div class="video__share">
-                            <img src="../img/icon/share.svg" alt="">
-                            <p>SHARE</p>
+                        <div class="video__share flexbox">
+                            <img class="video__buttons__icon" src="../img/icon/share.svg" alt="">
+                            <p class="video__buttons__label">SHARE</p>
                         </div>
-                        <div class="video__save">
-                            <img src="../img/icon/save.svg" alt="">
-                            <p>SAVE</p>
+                        <div class="video__save flexbox">
+                            <img class="video__buttons__icon" src="../img/icon/save.svg" alt="">
+                            <p class="video__buttons__label">SAVE</p>
                         </div>
-                        <img src="../img/icon/others.svg" alt="">
+                        <img class="video__buttons__icon" src="../img/icon/others.svg" alt="">
                     </div>
                 </div>
                 <!-- CHANNEL INFO -->
                 <div class="channel__info">
                     <div class="channel__info__upside">
-                        <div>
+                        <div id="channel__info__box" class="channel__info__box flexbox">
                             <div class="channel__profile">
-                                <img src="../img/avatar.jpg" alt="">
                             </div>
-                            <div class="channel__info__text">
-                                <h5>Marcus Levin</h5>
-                                <p>1.2M subscribers</p>
+                            <div id="channel__info__text" class="channel__info__text">
                             </div>
                         </div>
                         <button>SUBSCRIBES</button>
                     </div>
-                    <div class="channel__info__downside">
-                        <p>Chris Fisher, also known as the Blind Woodturner, learned his craft by listening to hundreds of hours of YouTube videos and experimenting in his workshop. Now he’s a YouTube creator himself, sells his products worldwide, and does demonstrations all around the country.</p>
-                        <button>SHOW MORE</button>
+                    <div id="channel__info__downside" class="channel__info__downside">
+                        
                     </div>
                 </div>
             </div>
@@ -280,32 +273,33 @@
                 <div class="comment__write__container">
                     <div class="user__profile">
                         <img src="../img/User-Avatar.png" alt="">
-                        <input type="text" placeholder="Add a public comment...">
                     </div>
+                    <input type="text" placeholder="Add a public comment...">
                 </div>
                 <div class="comment__list">
                     <div class="comment__box">
                         <div class="comment__profile">
-
+                            <img src="../img/User-Avatar.png" alt="">
                         </div>
                         <div class="comment__contents">
                             <div class="comment__info">
                                 <div class="comment__name">James</div>
-                                <div class="comment__time"> 8 hours ago</div>
+                                <div class="comment__time">8 hours ago</div>
                             </div>
                             <div class="comment__text">
                                 Wow, world is full of different skills 
                             </div>
                             <div class="comment__about">
-                                <div class="rate">
-                                    <div class="rating">
+                                <div class="rate flexbox">
+                                    <div class="rating flexbox">
                                         <img src="../img/icon/thumbsup.svg" alt="">
                                         <p>3</p>
                                     </div>
-                                    <div class="rating">
+                                    <div class="rating flexbox">
                                         <img src="../img/icon/thumbsdown.svg" alt="">
                                         <p>3</p>
                                     </div>
+                                    <button>REPLY</button>
                                 </div>
                             </div>
                         </div>
@@ -313,33 +307,13 @@
                 </div>
             </div>
         </div>
-        
+        <!-- VIDEOLIST 2/2 -->
         <div class="reco__video__list">
-            <div class="reco__sort__buttons">
-                <button>All</button>
-                <button>From Marcus Levin</button>
+            <div id="reco__sort__buttons" class="reco__sort__buttons">
+                <button class="selected">현재채널</button>
             </div>
-            <div class="video__list">
-                <div class="video__box">
-                    <div class="video__thumbnail">
-                        <img src="" alt="">
-                    </div>
-                    <div class="video__textbox">
-                        <h4>Ep 6: Living to Serve | SEARCH ON</h4>
-                        <p>James Gouse</p>
-                        <p>1M views . 3 years ago</p>
-                    </div>
-                </div>
-                <div class="video__box">
-                    <div class="video__thumbnail">
-                        <img src="" alt="">
-                    </div>
-                    <div class="video__textbox">
-                        <h4>Ep 6: Living to Serve | SEARCH ON</h4>
-                        <p>James Gouse</p>
-                        <p>1M views . 3 years ago</p>
-                    </div>
-                </div>
+            <div id="video__list" class="video__list">
+                
             </div>
         </div>
             
@@ -347,6 +321,5 @@
 
 </body>
 
-<script type="text/javascript" src="../js/channel.js"></script>
-
+<script type="text/javascript" src="../js/video.js"></script>
 </html>

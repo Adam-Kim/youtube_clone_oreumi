@@ -18,3 +18,7 @@ button {
     box-shadow: none;
     cursor:pointer;
 }
+
+.flexbox{
+    display: flex;
+}

@@ -5,7 +5,7 @@ getVideoList().then(createVideoItem);
 let currentURL = window.location.href;
 let url = new URL(currentURL);
 let channelName = url.searchParams.get("channelName"); //채널명
-channelName = "oreumi";
+// channelName = "oreumi";
 
 // 비디오 리스트 정보
 async function getVideoList() {
@@ -100,8 +100,8 @@ async function createVideoItem(videoList) {
   let masterVideo = filteredVideoList[0];
   bigVideoItem += `
                 <div class="channel__big__video">
-                  <video>
-                  <source src='${masterVideo.video_link}' type="video/mp4"> 
+                  <video controls autoplay muted>
+                    <source src='${masterVideo.video_link}' type="video/mp4" > 
                   </video>
                 </div>
                 <div class="big__video__info">
