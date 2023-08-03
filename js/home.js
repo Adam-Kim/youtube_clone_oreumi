@@ -61,27 +61,35 @@ async function createVideoItem(videoList) {
     let channelInfo = await getChannelInfo(videoList[i].video_channel);
 
     let channelURL = `./channel.html?channelName=${videoList[i].video_channel}"`;
-    let videoURL = `./video.html?id=${videoId}"`;
+    let videoURL = `./video.html?id=${videoId}`;
 
     feedItems += `
-        <div class="feed__item">
-            <a href="https://www.youtube.com/watch?v=JXl4QgYUi9c&t=1s">
-                <div class="feed__item__thumbnail">
-                    <img src='${videoInfo.image_link}'>
-                    <div class="feed__item__timebar">01:26</div>    
-                </div>
-            </a>
-            <div class="feed__item__info">
-                <div class=""><img class="feed__item__info__avatar" src='${channelInfo.channel_profile}'> </div>
-                <div class="feed__text__box">
-                    <h3 class="feed__item__info__title">
-                        <a href='${videoURL}'> ${videoInfo.video_title}</a>
-                    </h3>
-                    <a href="${channelURL}">${videoInfo.video_channel}</a>
-                    <p>${videoInfo.views}.${videoInfo.upload_date}</p>
-                </div>
+      <div class="feed__item">
+        <a href="${videoURL}">
+          <div class="feed__item__thumbnail">
+            <img src='${videoInfo.image_link}'>
+            <div class="feed__item__timebar">01:26</div>    
+          </div>
+          <div class="feed__item__info">
+            <div>
+              <a href="${channelURL}">
+                <img class="feed__item__info__avatar" src='${
+                  channelInfo.channel_profile
+                }'>
+              </a>
             </div>
-        </div>
+            <div class="feed__text__box">
+              <h3 class="feed__item__info__title">
+                  <a href='${videoURL}'> ${videoInfo.video_title}</a>
+              </h3>
+              <a href="${channelURL}">${videoInfo.video_channel}</a>
+              <p>조회수 ${convertViews(videoInfo.views)} • ${convertDate(
+      videoInfo.upload_date
+    )}</p>
+            </div>
+          </div>
+        </a>
+      </div>
     `;
   }
 
@@ -115,3 +123,68 @@ searchBox.addEventListener("keypress", function (event) {
     });
   }
 });
+
+// 단위 변환 함수
+function convertViews(views) {
+  if (views >= 10000000) {
+    const converted = (views / 10000000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "천만"
+      : converted + "천만";
+  } else if (views >= 1000000) {
+    const converted = (views / 1000000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "백만"
+      : converted + "백만";
+  } else if (views >= 10000) {
+    const converted = (views / 10000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "만"
+      : converted + "만";
+  } else if (views >= 1000) {
+    const converted = (views / 1000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "천"
+      : converted + "천";
+  } else {
+    return views.toString() + "회";
+  }
+}
+
+// 날짜 변환 함수
+function convertDate(dateString) {
+  // 파라미터로 받은 날짜를 Date 객체로 변환
+  const targetDate = new Date(dateString);
+
+  // 현재 날짜를 구하기 위해 현재 시간 기준으로 Date 객체 생성
+  const currentDate = new Date();
+
+  // 두 날짜의 시간 차이 계산 (밀리초 기준)
+  const timeDifference = currentDate - targetDate;
+
+  // 1년의 밀리초 수
+  const oneYearInMilliseconds = 31536000000;
+
+  if (timeDifference < 86400000) {
+    // 하루(24시간) 기준의 밀리초 수
+    return "오늘";
+  } else if (timeDifference < 172800000) {
+    // 이틀(48시간) 기준의 밀리초 수 (어제)
+    return "어제";
+  } else if (timeDifference < 604800000) {
+    // 일주일(7일) 기준의 밀리초 수
+    return "1주 전";
+  } else if (timeDifference < oneYearInMilliseconds) {
+    // 한 달 전 계산
+    const currentMonth = currentDate.getMonth();
+    const targetMonth = targetDate.getMonth();
+
+    if (currentMonth === targetMonth) {
+      return "1개월 전";
+    } else {
+      return `${currentMonth - targetMonth}개월 전`;
+    }
+  } else {
+    return `${Math.floor(timeDifference / oneYearInMilliseconds)}년 전`;
+  }
+}

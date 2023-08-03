@@ -19,6 +19,11 @@ button {
     cursor:pointer;
 }
 
+a{
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit; /* 링크 컬러를 부모 요소의 컬러로 상속 */
+}
+
 .flexbox{
     display: flex;
 }

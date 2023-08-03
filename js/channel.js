@@ -85,7 +85,7 @@ async function createVideoItem(videoList) {
                     <div>
                         <h2>${channelInfo.channel_name}</h2>
                     </div>
-                    <div>${channelInfo.subscribers} subscribers</div>
+                    <div>구독자${convertViews(channelInfo.subscribers)}명</div>
                 </div>
             </div>
             <div class="subscribes__box">
@@ -98,6 +98,9 @@ async function createVideoItem(videoList) {
 
   // 대표영상정보 페이지에 추가
   let masterVideo = filteredVideoList[0];
+  let masterVideoId = masterVideo.video_id;
+  let masterVideoUrl = `./video.html?id=${masterVideoId}`;
+
   bigVideoItem += `
                 <div class="channel__big__video">
                   <video controls autoplay muted>
@@ -105,8 +108,12 @@ async function createVideoItem(videoList) {
                   </video>
                 </div>
                 <div class="big__video__info">
-                    <h5>${masterVideo.video_title}</h5>
-                    <p>${masterVideo.views} . ${masterVideo.upload_date}</p>
+                    <a href="${masterVideoUrl}">
+                      <h5>${masterVideo.video_title}</h5>
+                    </a>
+                    <p>조회수 ${convertViews(
+                      masterVideo.views
+                    )}회 • ${convertDate(masterVideo.upload_date)}</p>
                     <p>${masterVideo.video_detail}</p>
                 </div>
     
@@ -114,27 +121,103 @@ async function createVideoItem(videoList) {
 
   channelBigVideoBox.innerHTML = bigVideoItem;
 
+  let playlistPlayButton = document.getElementById("playlist__play");
+  playlistPlayButton.href = `${masterVideoUrl}`;
+
   // 플레이리스트 정보 페이지에 추가
   let playlistContainer = document.getElementById("playlist");
   let playlistItems = "";
   for (let i = 0; i < filteredVideoList.length; i++) {
     let videoId = filteredVideoList[i].video_id;
     let videoInfo = filteredVideoList[i];
-    let videoURL = `./video?id=${videoId}"`;
+    let videoURL = `./video.html?id=${videoId}"`;
 
     playlistItems += `
-    <div class="channel__small__video__box">
-      <div class="video__thumbnail">
-          <img src="${filteredVideoList[i].image_link}" alt="">
+    <a href="${videoURL}">
+      <div class="channel__small__video__box">
+        <div class="video__thumbnail">
+            <img src="${filteredVideoList[i].image_link}" alt="">
+        </div>
+        <div class="video__info">
+          <a href="${videoURL}">
+            <h4>${filteredVideoList[i].video_title}</h4>
+          </a>
+            <a href="#">
+              <p>${channelName}</p>
+            </a>
+            <p>조회수 ${convertViews(
+              filteredVideoList[i].views
+            )}회 • ${convertDate(filteredVideoList[i].upload_date)}</p>
+        </div>
       </div>
-      <div class="video__info">
-          <h4>${filteredVideoList[i].video_title}</h4>
-          <p>${channelName}</p>
-          <p>${filteredVideoList[i].views} . ${filteredVideoList[i].upload_date}</p>
-      </div>
-    </div>
+    </a>
       `;
   }
 
   playlistContainer.innerHTML = playlistItems;
+}
+
+// 단위 변환 함수
+function convertViews(views) {
+  if (views >= 10000000) {
+    const converted = (views / 10000000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "천만"
+      : converted + "천만";
+  } else if (views >= 1000000) {
+    const converted = (views / 1000000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "백만"
+      : converted + "백만";
+  } else if (views >= 10000) {
+    const converted = (views / 10000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "만"
+      : converted + "만";
+  } else if (views >= 1000) {
+    const converted = (views / 1000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "천"
+      : converted + "천";
+  } else {
+    return views.toString() + "회";
+  }
+}
+
+// 날짜 변환 함수
+function convertDate(dateString) {
+  // 파라미터로 받은 날짜를 Date 객체로 변환
+  const targetDate = new Date(dateString);
+
+  // 현재 날짜를 구하기 위해 현재 시간 기준으로 Date 객체 생성
+  const currentDate = new Date();
+
+  // 두 날짜의 시간 차이 계산 (밀리초 기준)
+  const timeDifference = currentDate - targetDate;
+
+  // 1년의 밀리초 수
+  const oneYearInMilliseconds = 31536000000;
+
+  if (timeDifference < 86400000) {
+    // 하루(24시간) 기준의 밀리초 수
+    return "오늘";
+  } else if (timeDifference < 172800000) {
+    // 이틀(48시간) 기준의 밀리초 수 (어제)
+    return "어제";
+  } else if (timeDifference < 604800000) {
+    // 일주일(7일) 기준의 밀리초 수
+    return "1주 전";
+  } else if (timeDifference < oneYearInMilliseconds) {
+    // 한 달 전 계산
+    const currentMonth = currentDate.getMonth();
+    const targetMonth = targetDate.getMonth();
+
+    if (currentMonth === targetMonth) {
+      return "1개월 전";
+    } else {
+      return `${currentMonth - targetMonth}개월 전`;
+    }
+  } else {
+    return `${Math.floor(timeDifference / oneYearInMilliseconds)}년 전`;
+  }
 }

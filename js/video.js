@@ -4,8 +4,8 @@ getVideoList().then(createVideoItem);
 // 현재 주소에서 비디오ID 가져오기
 let currentURL = window.location.href;
 let url = new URL(currentURL);
-let videoId = url.searchParams.get("videoId"); //채널명
-videoId = "12";
+let videoId = url.searchParams.get("id"); //채널명
+// videoId = "12";
 
 // 비디오 리스트 정보
 async function getVideoList() {
@@ -74,30 +74,36 @@ async function createVideoItem(videoList) {
     `;
   videoInfoBox.innerHTML = `
         <p>조회수 ${convertedViews}회</p>
-        <p> . </p>
+        <p> • </p>
         <p>${convertDate(currentVideoInfo.upload_date)}</p>
     `;
 
   // 추천 태그
+  let recoSortButtons = document.getElementById("reco__sort__buttons");
+
+  recoSortButtons.innerHTML += `<button class="selected">${currentVideoInfo.video_channel}</button>`;
+
   for (let i = 0; i < tagList.length; i++) {
-    let reco__sort__buttons = document.getElementById("reco__sort__buttons");
     let tag = tagList[i];
 
-    reco__sort__buttons.innerHTML += `
+    recoSortButtons.innerHTML += `
             <button>${tag}</button>
             `;
   }
 
   let currentChannelInfo = await getChannelInfo(channelName);
+  let currentChannelURL = `./channel.html?channelName=${channelName}`;
   let channelInfoBox = document.getElementById("channel__info__box");
   channelInfoBox.innerHTML = `
     <div class="channel__profile">
         <img src=${currentChannelInfo.channel_profile} alt="">
     </div>
-    <div id="channel__info__text" class="channel__info__text">
-        <h5>${currentChannelInfo.channel_name}</h5>
-        <p>구독자 ${convertViews(currentChannelInfo.subscribers)}명</p>
-    </div>
+    <a href ="${currentChannelURL}">
+      <div id="channel__info__text" class="channel__info__text">
+          <h5>${currentChannelInfo.channel_name}</h5>
+          <p>구독자 ${convertViews(currentChannelInfo.subscribers)}명</p>
+      </div>
+    </a>
     `;
 
   let channelInfoDownSide = document.getElementById("channel__info__downside");
@@ -122,8 +128,9 @@ async function createVideoItem(videoList) {
   let videoListItems = "";
   for (let i = 0; i < filteredVideoList.length; i++) {
     let video = filteredVideoList[i];
-    let videoURL = `./video?id=${videoId}"`;
-    let views = convertViews(video.views);
+    let channelName = video.video_channel;
+    let videoURL = `./video.html?id=${i}"`;
+    let channelURL = `./channel.html?channelName=${channelName}`;
 
     videoListItems += `
         <div class="video__box">
@@ -131,9 +138,15 @@ async function createVideoItem(videoList) {
                 <img src="${video.image_link}" alt="">
             </div>
             <div class="video__textbox">
+                <a href="${videoURL}">
                 <h4>${video.video_title}</h4>
-                <p>${video.video_channel}</p>
-                <p>조회수 ${views}  .  ${convertDate(video.upload_date)}</p>
+                </a>
+                <a href = "${channelURL}">
+                  <p>${video.video_channel}</p>
+                </a>
+                <p>조회수 ${convertViews(video.views)}  •  ${convertDate(
+      video.upload_date
+    )}</p>
             </div>
         </div>
         `;
@@ -145,13 +158,25 @@ async function createVideoItem(videoList) {
 // 단위 변환 함수
 function convertViews(views) {
   if (views >= 10000000) {
-    return (views / 10000000).toFixed(1) + "천만";
+    const converted = (views / 10000000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "천만"
+      : converted + "천만";
   } else if (views >= 1000000) {
-    return (views / 1000000).toFixed(1) + "백만";
+    const converted = (views / 1000000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "백만"
+      : converted + "백만";
   } else if (views >= 10000) {
-    return (views / 10000).toFixed(1) + "만"; //소수점 1자리까지 계산
+    const converted = (views / 10000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "만"
+      : converted + "만";
   } else if (views >= 1000) {
-    return (views / 1000).toFixed(1) + "천";
+    const converted = (views / 1000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "천"
+      : converted + "천";
   } else {
     return views.toString() + "회";
   }
