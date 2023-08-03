@@ -180,7 +180,7 @@ function convertViews(views) {
       ? converted.slice(0, -2) + "천"
       : converted + "천";
   } else {
-    return views.toString() + "회";
+    return views.toString();
   }
 }
 

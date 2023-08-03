@@ -65,17 +65,15 @@ async function createVideoItem(videoList) {
         </video>
     `;
 
-  let convertedViews = convertViews(currentVideoInfo.views);
-
   videoTitle.innerHTML = `
         <div id="video__title" class="video__title">
             ${currentVideoInfo.video_title}
         </div>
     `;
   videoInfoBox.innerHTML = `
-        <p>조회수 ${convertedViews}회</p>
-        <p> • </p>
-        <p>${convertDate(currentVideoInfo.upload_date)}</p>
+        <p>조회수 ${convertViews(currentVideoInfo.views)}회 • ${convertDate(
+    currentVideoInfo.upload_date
+  )}</p>
     `;
 
   // 추천 태그
@@ -178,7 +176,7 @@ function convertViews(views) {
       ? converted.slice(0, -2) + "천"
       : converted + "천";
   } else {
-    return views.toString() + "회";
+    return views.toString();
   }
 }
 

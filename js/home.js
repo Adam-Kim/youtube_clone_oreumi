@@ -83,7 +83,7 @@ async function createVideoItem(videoList) {
                   <a href='${videoURL}'> ${videoInfo.video_title}</a>
               </h3>
               <a href="${channelURL}">${videoInfo.video_channel}</a>
-              <p>조회수 ${convertViews(videoInfo.views)} • ${convertDate(
+              <p>조회수 ${convertViews(videoInfo.views)}회 • ${convertDate(
       videoInfo.upload_date
     )}</p>
             </div>
@@ -147,7 +147,7 @@ function convertViews(views) {
       ? converted.slice(0, -2) + "천"
       : converted + "천";
   } else {
-    return views.toString() + "회";
+    return views.toString();
   }
 }
 
