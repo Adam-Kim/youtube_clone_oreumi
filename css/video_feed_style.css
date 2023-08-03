@@ -17,7 +17,7 @@ img{
 
 /* VIDEO & COMMENT 1/2 */
 .main__container{
-    width: 65%;
+    width: 50%;
     color: #fff;
     min-width: 320px;
 }
@@ -256,8 +256,7 @@ img{
 /* VIDEOLIST */
 .reco__video__list{
     margin-left: 24px;
-    width: 20%;
-    max-width: 300px;
+    max-width: 430px;    
     margin-bottom:100px
 }
 
@@ -289,7 +288,7 @@ img{
 }
 
 .video__thumbnail{
-    width: 100%;
+    width: 200px;
     background-color: #4b4b4b;
 }
 
@@ -304,7 +303,7 @@ img{
     flex-direction: column;
     flex-wrap: wrap;
     gap: 4px;
-    
+    width: 50%;
 }
 
 .video__textbox h4{

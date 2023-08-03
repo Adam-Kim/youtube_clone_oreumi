@@ -62,10 +62,6 @@ async function createVideoItem(videoList) {
     getVideoInfo(video.video_id)
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
-  //채널명으로 필터링
-  let filteredVideoList = videoInfoList.filter(
-    (videoInfo) => videoInfo.video_channel === channelName
-  );
 
   //채널 정보 가져오기
   let channelInfo = await getChannelInfo();
@@ -96,8 +92,33 @@ async function createVideoItem(videoList) {
 
   channelInfoContainer.innerHTML = channelInfoItems;
 
+  //채널명으로 필터링
+  let filteredVideoList = videoInfoList.filter(
+    (videoInfo) => videoInfo.video_channel === channelName
+  );
+
+  // 최고 조회수 데이터를 반환하는 함수
+  function getMostViewedVideo(filteredVideoList) {
+    return filteredVideoList.reduce((highestViewedVideo, currentVideo) => {
+      return highestViewedVideo.views > currentVideo.views
+        ? highestViewedVideo
+        : currentVideo;
+    });
+  }
+  let poppularVideo = getMostViewedVideo(filteredVideoList); //채널 인기동영상
+
+  // 업로드 순(최신순)으로 정렬하는 함수
+  let sortedVideoList = filteredVideoList.sort((a, b) => {
+    // "upload_date"를 Date 객체로 변환
+    let dateA = new Date(a.upload_date);
+    let dateB = new Date(b.upload_date);
+
+    // 최신 날짜가 먼저 오도록 정렬
+    return dateB - dateA;
+  });
+
   // 대표영상정보 페이지에 추가
-  let masterVideo = filteredVideoList[0];
+  let masterVideo = poppularVideo;
   let masterVideoId = masterVideo.video_id;
   let masterVideoUrl = `./video.html?id=${masterVideoId}`;
 
@@ -128,26 +149,26 @@ async function createVideoItem(videoList) {
   let playlistContainer = document.getElementById("playlist");
   let playlistItems = "";
   for (let i = 0; i < filteredVideoList.length; i++) {
-    let videoId = filteredVideoList[i].video_id;
-    let videoInfo = filteredVideoList[i];
+    let videoInfo = sortedVideoList[i];
+    let videoId = videoInfo.video_id;
     let videoURL = `./video.html?id=${videoId}"`;
 
     playlistItems += `
     <a href="${videoURL}">
       <div class="channel__small__video__box">
         <div class="video__thumbnail">
-            <img src="${filteredVideoList[i].image_link}" alt="">
+            <img src="${videoInfo.image_link}" alt="">
         </div>
         <div class="video__info">
           <a href="${videoURL}">
-            <h4>${filteredVideoList[i].video_title}</h4>
+            <h4>${videoInfo.video_title}</h4>
           </a>
             <a href="#">
               <p>${channelName}</p>
             </a>
-            <p>조회수 ${convertViews(
-              filteredVideoList[i].views
-            )}회 • ${convertDate(filteredVideoList[i].upload_date)}</p>
+            <p>조회수 ${convertViews(videoInfo.views)}회 • ${convertDate(
+      videoInfo.upload_date
+    )}</p>
         </div>
       </div>
     </a>

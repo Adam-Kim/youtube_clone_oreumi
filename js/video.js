@@ -61,7 +61,7 @@ async function createVideoItem(videoList) {
   // 비디오 추가
   videoContainer.innerHTML = `
         <video id="current__video" controls autoplay muted>
-                    <source src="https://storage.googleapis.com/oreumi.appspot.com/video_${videoId}.mp4">
+                    <source src="http://storage.googleapis.com/oreumi.appspot.com/video_${videoId}.mp4">
         </video>
     `;
 

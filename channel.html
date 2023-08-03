@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/global_style.css">
-    <link rel="stylesheet" href="../css/header_style.css">
-    <link rel="stylesheet" href="../css/aside_style.css">
-    <link rel="stylesheet" href="../css/chip_style.css">
-    <link rel="stylesheet" href="../css/channel_feed_style.css">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/global_style.css">
+    <link rel="stylesheet" href="./css/header_style.css">
+    <link rel="stylesheet" href="./css/aside_style.css">
+    <link rel="stylesheet" href="./css/chip_style.css">
+    <link rel="stylesheet" href="./css/channel_feed_style.css">
     <title>YouTube</title>
 </head>
 
@@ -19,12 +21,12 @@
         <div class="navigation__menu">
             <!-- menu button -->
             <button class="navigation__button navigation__menu__button">
-                <img src="../img/icon/hamburger.svg" width="24" height="24"></img>
+                <img src="./img/icon/hamburger.svg" width="24" height="24"></img>
             </button>
 
             <!-- youtube logo -->
-            <a href="./home.html">
-                <image src="../img/Youtube-Logo.svg" alt="youTube">
+            <a href="./index.html">
+                <image src="./img/Youtube-Logo.svg" alt="youTube">
             </a>
         </div>
 
@@ -34,12 +36,12 @@
 
             <!-- search button -->
             <button id="search__button" class="navigation__button navigation__search__icon">
-                <img src="../img/icon/search.svg" width="24" height="24"></img>
+                <img src="./img/icon/search.svg" width="24" height="24"></img>
             </button>
             <!-- voice button -->
             <button class="navigation__button">
                 <div class="back__circle">
-                    <img src="../img/icon/mic.svg" width="20" height="20"></img>
+                    <img src="./img/icon/mic.svg" width="20" height="20"></img>
                 </div>
             </button>
         </div>
@@ -47,18 +49,18 @@
         <div class="navigation__options">
             <!-- create button -->
             <button class="navigation__button">
-                <img src="../img/icon/create.svg" width="24" height="24"></img>
+                <img src="./img/icon/create.svg" width="24" height="24"></img>
             </button>
             <!-- youtube apps button -->
             <button class="navigation__button">
-                <img src="../img/icon/apps.svg" width="24" height="24"></img>
+                <img src="./img/icon/apps.svg" width="24" height="24"></img>
             </button>
             <!-- notifications button -->
             <button class="navigation__button">
-                <img src="../img/icon/notifications.svg" width="24" height="24"></img>
+                <img src="./img/icon/notifications.svg" width="24" height="24"></img>
             </button>
             <!-- user avatar -->
-            <div class=""><img class="navigation__avatar" alt="" src="../img/avatar.jpg"> </div>
+            <div class=""><img class="navigation__avatar" alt="" src="./img/avatar.jpg"> </div>
             <div>
             </div>
     </nav>
@@ -67,19 +69,19 @@
     <aside class="sidebar">
         <section class="sidebar__section">
             <a class="sidebar__section__link sidebar__section__link--selected" href="/">
-                <img src="../img/icon/home-fill.svg" width="24" height="24"></img>
+                <img src="./img/icon/home-fill.svg" width="24" height="24"></img>
                 <span>
                     Home
                 </span>
             </a>
             <a class="sidebar__section__link" href="/">
-                <img src="../img/icon/explore.svg" width="24" height="24"></img>
+                <img src="./img/icon/explore.svg" width="24" height="24"></img>
                 <span>
                     Explore
                 </span>
             </a>
             <a class="sidebar__section__link" href="/">
-                <img src="../img/icon/subscriptions.svg" width="24" height="24"></img>
+                <img src="./img/icon/subscriptions.svg" width="24" height="24"></img>
                 <span>
                     Subscriptions
                 </span>
@@ -89,32 +91,32 @@
 
         <section class="sidebar__section">
             <a class="sidebar__section__link" href="/">
-                <img src="../img/icon/library.svg" width="24" height="24"></img>
+                <img src="./img/icon/library.svg" width="24" height="24"></img>
                 <span>Library</span>
             </a>
 
             <a class="sidebar__section__link" href="/">
-                <img src="../img/icon/history.svg" width="24" height="24"></img>
+                <img src="./img/icon/history.svg" width="24" height="24"></img>
                 <span>History</span>
             </a>
 
             <a class="sidebar__section__link" href="/">
-                <img src="../img/icon/yourVideos.svg" width="24" height="24"></img>
+                <img src="./img/icon/yourVideos.svg" width="24" height="24"></img>
                 <span>Your Videos</span>
             </a>
 
             <a class="sidebar__section__link" href="/">
-                <img src="../img/icon/watchLater.svg" width="24" height="24"></img>
+                <img src="./img/icon/watchLater.svg" width="24" height="24"></img>
                 <span>Watch later</span>
             </a>
 
             <a class="sidebar__section__link" href="/">
-                <img src="../img/icon/liked.svg" width="24" height="24"></img>
+                <img src="./img/icon/liked.svg" width="24" height="24"></img>
                 <span>Your Playlists</span>
             </a>
 
             <a class="sidebar__section__link" href="/">
-                <img src="../img/icon/arrowBottom.svg" width="24" height="24"></img>
+                <img src="./img/icon/arrowBottom.svg" width="24" height="24"></img>
                 <span>Show more</span>
             </a>
 
@@ -122,25 +124,25 @@
 
         <section class="sidebar__section">
             <h3>Subscriptions</h3>
-            <a class="sidebar__section__link" href="https://www.youtube.com/">
-                <div class=""><img alt="" src="../img/avatar.jpg"> </div>
+            <a class="sidebar__section__link" href="http://www.youtube.com/">
+                <div class=""><img alt="" src="./img/avatar.jpg"> </div>
                 <span>오르미2기</span>
             </a>
 
-            <a class="sidebar__section__link" href="https://www.youtube.com/">
-                <div class=""><img alt="" src="../img/avatar.jpg"> </div>
+            <a class="sidebar__section__link" href="http://www.youtube.com/">
+                <div class=""><img alt="" src="./img/avatar.jpg"> </div>
                 <span>오르미2기</span>
             </a>
-            <a class="sidebar__section__link" href="https://www.youtube.com/">
-                <div class=""><img alt="" src="../img/avatar.jpg"> </div>
+            <a class="sidebar__section__link" href="http://www.youtube.com/">
+                <div class=""><img alt="" src="./img/avatar.jpg"> </div>
                 <span>오르미2기</span>
             </a>
-            <a class="sidebar__section__link" href="https://www.youtube.com/">
-                <div class=""><img alt="" src="../img/avatar.jpg"> </div>
+            <a class="sidebar__section__link" href="http://www.youtube.com/">
+                <div class=""><img alt="" src="./img/avatar.jpg"> </div>
                 <span>오르미2기</span>
             </a>
             <a class="sidebar__section__link" href="/">
-                <img src="../img/icon/arrowBottom.svg" width="24" height="24"></img>
+                <img src="./img/icon/arrowBottom.svg" width="24" height="24"></img>
 
                 <span>Show more</span>
             </a>
@@ -149,25 +151,25 @@
         <section class="sidebar__section">
             <h3>More from YouTube</h3>
             <a href="/" class="sidebar__section__link">
-                <img src="../img/icon/premium.svg" width="24" height="24"></img>
+                <img src="./img/icon/premium.svg" width="24" height="24"></img>
                 <span>
                     Youtube Premium
                 </span>
             </a>
             <a href="/" class="sidebar__section__link">
-                <img src="../img/icon/gaming.svg" width="24" height="24"></img>
+                <img src="./img/icon/gaming.svg" width="24" height="24"></img>
                 <span>
                     Gaming
                 </span>
             </a>
             <a href="/" class="sidebar__section__link">
-                <img src="../img/icon/live.svg" width="24" height="24"></img>
+                <img src="./img/icon/live.svg" width="24" height="24"></img>
                 <span>
                     Live
                 </span>
             </a>
             <a href="/" class="sidebar__section__link">
-                <img src="../img/icon/sports.svg" width="24" height="24"></img>
+                <img src="./img/icon/sports.svg" width="24" height="24"></img>
                 <span>
                     sports
                 </span>
@@ -176,25 +178,25 @@
 
         <section class="sidebar__section">
             <a href="/" class="sidebar__section__link">
-                <img src="../img/icon/settings.svg" width="24" height="24"></img>
+                <img src="./img/icon/settings.svg" width="24" height="24"></img>
                 <span>
                     Settings
                 </span>
             </a>
             <a href="/" class="sidebar__section__link">
-                <img src="../img/icon/report.svg" width="24" height="24"></img>
+                <img src="./img/icon/report.svg" width="24" height="24"></img>
                 <span>
                     Report history
                 </span>
             </a>
             <a href="/" class="sidebar__section__link">
-                <img src="../img/icon/help.svg" width="24" height="24"></img>
+                <img src="./img/icon/help.svg" width="24" height="24"></img>
                 <span>
                     Help
                 </span>
             </a>
             <a href="/" class="sidebar__section__link">
-                <img src="../img/icon/feedback.svg" width="24" height="24"></img>
+                <img src="./img/icon/feedback.svg" width="24" height="24"></img>
                 <span>
                     Send feedback
                 </span>
@@ -221,11 +223,11 @@
                 <button class="channel__menu">CHANNELS</button>
                 <button class="channel__menu">ABOUT</button>
                 <button class="channel__menu search">
-                    <img src="../img/icon/search.svg" width="24" height="24"></img>
+                    <img src="./img/icon/search.svg" width="24" height="24"></img>
                 </button>
             </div>
             <button class="channel__menu">
-                <img src="../img/icon/arrowRight.svg" width="24" height="24"></img>
+                <img src="./img/icon/arrowRight.svg" width="24" height="24"></img>
             </button>
         </div>
 
@@ -241,7 +243,7 @@
                     <a id="playlist__play">
                         <button>
                                 <div>
-                                    <img src="../img/icon/play.svg" alt="">
+                                    <img src="./img/icon/play.svg" alt="">
                                 </div>
                                 <div>PLAY ALL</div>
                         </button>
@@ -257,6 +259,6 @@
 
 </body>
 
-<script type="text/javascript" src="../js/channel.js"></script>
+<script type="text/javascript" src="./js/channel.js"></script>
 
 </html>
