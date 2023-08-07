@@ -284,7 +284,7 @@ img{
 .video__box{
     display: flex;
     gap: 8px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 .video__thumbnail{
