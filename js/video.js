@@ -9,14 +9,14 @@ let videoId = url.searchParams.get("id"); //채널명
 
 // 비디오 리스트 정보
 async function getVideoList() {
-  let response = await fetch("http://oreumi.appspot.com/video/getVideoList");
+  let response = await fetch("https://oreumi.appspot.com/video/getVideoList");
   let videoListData = await response.json();
   return videoListData;
 }
 
 // 각 비디오 정보
 async function getVideoInfo(videoId) {
-  let url = `http://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
+  let url = `https://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
   let response = await fetch(url);
   let videoData = await response.json();
   return videoData;
@@ -24,7 +24,7 @@ async function getVideoInfo(videoId) {
 
 // 채널 정보
 async function getChannelInfo(channelName) {
-  let url = `http://oreumi.appspot.com/channel/getChannelInfo`;
+  let url = `https://oreumi.appspot.com/channel/getChannelInfo`;
 
   let response = await fetch(url, {
     method: "POST",
@@ -41,7 +41,7 @@ async function getChannelInfo(channelName) {
 // 채널 내 영상정보
 async function getChannelVideo() {
   let response = await fetch(
-    `http://oreumi.appspot.com/video/getChannelVideo?video_channel=${channelName}`
+    `https://oreumi.appspot.com/video/getChannelVideo?video_channel=${channelName}`
   );
   let videoListData = await response.json();
   return videoListData;
@@ -57,11 +57,13 @@ async function createVideoItem(videoList) {
   let currentVideoInfo = await getVideoInfo(videoId);
   let tagList = currentVideoInfo.video_tag;
   let channelName = currentVideoInfo.video_channel;
+  let targetTagList = currentVideoInfo.video_tag; //현재 비디오 태그
+  let targetVideoId = currentVideoInfo.video_id;
 
   // 비디오 추가
   videoContainer.innerHTML = `
         <video id="current__video" controls autoplay muted>
-                    <source src="http://storage.googleapis.com/oreumi.appspot.com/video_${videoId}.mp4">
+                    <source src="https://storage.googleapis.com/oreumi.appspot.com/video_${videoId}.mp4">
         </video>
     `;
 
@@ -116,15 +118,82 @@ async function createVideoItem(videoList) {
     getVideoInfo(video.video_id)
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
-  //채널명으로 필터링
-  let filteredVideoList = videoInfoList.filter(
-    (videoInfo) => videoInfo.video_channel === channelName
+
+  // 유사도 측정결과 가져오기
+  async function getSimilarity(firstWord, secondWord) {
+    const openApiURL = "http://aiopen.etri.re.kr:8000/WiseWWN/WordRel";
+    const access_key = "cb42d8aa-2c9e-4f07-82a1-2aa22113b528";
+
+    let requestJson = {
+      argument: {
+        first_word: firstWord,
+        second_word: secondWord,
+      },
+    };
+
+    let response = await fetch(openApiURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: access_key,
+      },
+      body: JSON.stringify(requestJson),
+    });
+    let data = await response.json();
+    return data.return_object["WWN WordRelInfo"].WordRelInfo.Distance;
+  }
+
+  async function calculateVideoSimilarities(videoList, targetTagList) {
+    let filteredVideoList = [];
+
+    for (let video of videoList) {
+      let totalDistance = 0;
+      let promises = [];
+
+      for (let videoTag of video.video_tag) {
+        for (let targetTag of targetTagList) {
+          if (videoTag == targetTag) {
+            promises.push(0);
+          } else {
+            promises.push(getSimilarity(videoTag, targetTag));
+          }
+        }
+      }
+
+      let distances = await Promise.all(promises);
+
+      for (let distance of distances) {
+        if (distance !== -1) {
+          totalDistance += distance;
+        }
+      }
+
+      if (totalDistance !== 0) {
+        if (targetVideoId !== video.video_id) {
+          filteredVideoList.push({ ...video, score: totalDistance });
+        }
+      }
+    }
+
+    filteredVideoList.sort((a, b) => a.score - b.score);
+
+    filteredVideoList = filteredVideoList.map((video) => ({
+      ...video,
+      score: 0,
+    }));
+    console.log(filteredVideoList);
+    return filteredVideoList;
+  }
+
+  let filteredVideoList = await calculateVideoSimilarities(
+    videoInfoList,
+    targetTagList
   );
 
   // 비디오리스트에 추가
   let videoListDiv = document.getElementById("video__list");
   let videoListItems = "";
-  for (let i = 0; i < filteredVideoList.length; i++) {
+  for (let i = 0; i < 5; i++) {
     let video = filteredVideoList[i];
     let channelName = video.video_channel;
     let videoURL = `./video.html?id=${i}"`;
@@ -156,22 +225,22 @@ async function createVideoItem(videoList) {
 // 단위 변환 함수
 function convertViews(views) {
   if (views >= 10000000) {
-    const converted = (views / 10000000).toFixed(1);
+    let converted = (views / 10000000).toFixed(1);
     return converted.endsWith(".0")
       ? converted.slice(0, -2) + "천만"
       : converted + "천만";
   } else if (views >= 1000000) {
-    const converted = (views / 1000000).toFixed(1);
+    let converted = (views / 1000000).toFixed(1);
     return converted.endsWith(".0")
       ? converted.slice(0, -2) + "백만"
       : converted + "백만";
   } else if (views >= 10000) {
-    const converted = (views / 10000).toFixed(1);
+    let converted = (views / 10000).toFixed(1);
     return converted.endsWith(".0")
       ? converted.slice(0, -2) + "만"
       : converted + "만";
   } else if (views >= 1000) {
-    const converted = (views / 1000).toFixed(1);
+    let converted = (views / 1000).toFixed(1);
     return converted.endsWith(".0")
       ? converted.slice(0, -2) + "천"
       : converted + "천";
@@ -183,16 +252,16 @@ function convertViews(views) {
 // 날짜 변환 함수
 function convertDate(dateString) {
   // 파라미터로 받은 날짜를 Date 객체로 변환
-  const targetDate = new Date(dateString);
+  let targetDate = new Date(dateString);
 
   // 현재 날짜를 구하기 위해 현재 시간 기준으로 Date 객체 생성
-  const currentDate = new Date();
+  let currentDate = new Date();
 
   // 두 날짜의 시간 차이 계산 (밀리초 기준)
-  const timeDifference = currentDate - targetDate;
+  let timeDifference = currentDate - targetDate;
 
   // 1년의 밀리초 수
-  const oneYearInMilliseconds = 31536000000;
+  let oneYearInMilliseconds = 31536000000;
 
   if (timeDifference < 86400000) {
     // 하루(24시간) 기준의 밀리초 수
@@ -205,8 +274,8 @@ function convertDate(dateString) {
     return "1주 전";
   } else if (timeDifference < oneYearInMilliseconds) {
     // 한 달 전 계산
-    const currentMonth = currentDate.getMonth();
-    const targetMonth = targetDate.getMonth();
+    let currentMonth = currentDate.getMonth();
+    let targetMonth = targetDate.getMonth();
 
     if (currentMonth === targetMonth) {
       return "1개월 전";
